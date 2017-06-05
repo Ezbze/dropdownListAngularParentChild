@@ -1,0 +1,22 @@
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" (click)="toggleSelect()">
+    <span class="pull-left" [innerHtml]="dropDownListHeader"></span>
+    <span class="caret pull-right"></span>
+  </button>
+  <ul class="dropdown-menu multi-select-popup" [ngStyle]="{display:isOpen ? 'block' : 'none'}" style="list-style-type: none;">
+       <li *ngFor="let item of items">
+                <span [ngStyle]="{opacity: 0.5, display:block}" style="font-size:small;" >{{item.name}}</span>
+                 <ul style="list-style-type: none; font-size:none;" >
+                    <li *ngFor="let subItem of item.subItems">
+                        <label style="font-size:small;">
+                             <input type="checkbox" [(ngModel)]="subItem.checked" >
+                                {{subItem.label}}
+                        </label>
+                    </li>
+                </ul>       
+        </li>
+        <button type="button" class="btn btn-secondary" (click)="menuSelectClick()" style="background: lightgray;">
+            {{dropDownListApplyButton}}
+        </button>
+  </ul>
+</div>

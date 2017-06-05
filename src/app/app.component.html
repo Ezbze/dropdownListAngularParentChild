@@ -1,0 +1,22 @@
+	<app-child  class="pull-left" [childItems]="itemSubscriptions" ></app-child>
+  <table style="padding-top: 2px; padding-bottom: 5px;" >
+    <tbody>
+		<tr>
+			<td style="padding-left: 25px;">
+				&nbsp;
+			</td>
+			<td *ngFor="let item of itemSubscriptions">
+				<div *ngFor="let subitem of item.subItems | equal:{checked: true}" style="display: inline-block; padding-right: 5px;">
+					<button type="button" 
+					        class="btnRw" 
+					        aria-label="Close" 
+					        style="font-size: smaller;"
+                            (click)="filterItemBtnClick(subitem)">
+						{{ subitem.label }}
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</table>
